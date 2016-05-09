@@ -1,0 +1,16 @@
+<html>
+  <head>
+    <meta name=viewport content="width=device-width, initial-scale=1">
+    <meta name="description" content="A website that tells you the probabilities of certain cards being drawn in secret hitler.">
+    <title>secret hitler probabilities</title>
+    <link async rel="stylesheet" type="text/css" href="style.css">
+    <!-- jquery cdn --><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <!-- fraction.js offical host --><script src="http://hypervolu.me/~erik/fraction.js/releases/fraction-0.3.js"></script>
+    <!-- typeWatch.js local--><script async type="text/javascript" src="jquery.typewatch.js"></script>
+    <script async type="text/javascript" src="jssource.js"></script>
+  </head>
+  <body>
+    <button onclick="displayCycle()" onload="displayCycle()">Display type: Percentage</button>
+    <h1>The probability of drawing</h1> <input id="round" /> <h1>is</h1><span id="answer">N/A</span>
+  </body>
+</html>
