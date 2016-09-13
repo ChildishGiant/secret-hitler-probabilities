@@ -2,6 +2,7 @@ var $round = $("#round")
 var viewTypes = ["Percentage", "Decimal", "Fraction"];
 var viewType = "Percentage";
 var typeCount = 0;
+var probs = [];
 
 function displayCycle() {
   typeCount += 1;
@@ -51,42 +52,19 @@ function processResults() {
     $(answer).text("calculating");
     for (var i = 0, len = data.length; i < len; i++) {
       if (data[i] == "f"){
-        switch (i) {
-          case 0:
-            firstProb = fCards / (fCards + lCards);
-            break;
-          case 1:
-            secondProb = fCards / (fCards + lCards);
-            break;
-          case 2:
-            thirdProb = fCards / (fCards + lCards);
-            break;
-          default:
-            console.log("Oops")
-            break;
-          }
+        probs[i] = fCards / (fCards + lCards);
         fCards -= 1;
-      }
+      };
+
       if (data[i] == "l"){
-        switch (i) {
-          case 0:
-            firstProb = lCards / (fCards + lCards);
-            break;
-          case 1:
-            secondProb = lCards / (fCards + lCards);
-            break;
-          case 2:
-            thirdProb = lCards / (fCards + lCards);
-            break;
-          default:
-            console.log("Oops")
-            break;
-          }
+        probs[i] = lCards / (fCards + lCards);
         lCards -= 1;
-      }
+      };
+
     }
-    var decimalProb = (firstProb*secondProb*thirdProb).toFixed(2);
-    var percentProb = (firstProb*secondProb*thirdProb*100).toFixed(2);
+
+    var decimalProb = (probs.reduce(function(a,b){return a*b;})).toFixed(2);
+    var percentProb = (probs.reduce(function(a,b){return a*b;})*100).toFixed(2);
     var fractionProb = new Fraction(decimalProb);
     switch (viewType) {
       case "Percentage":
