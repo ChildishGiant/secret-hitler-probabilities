@@ -30,24 +30,14 @@ var options = {
 
 $("#round").typeWatch( options );
 
-function resizeInput() {
-    var content =
-        $(this).val().length > 0 ? $(this).val() : $(this).prop("placeholder");
-    var widthTester = $("<span>"+content+"</span>").hide();
-    widthTester.insertAfter($(this));
-    $(this).css("width",widthTester.width()+"px");
-    widthTester.remove();
- }
-
-$('input[type="text"]')
-    .keyup(resizeInput)
-    .each(resizeInput);
-
 
 function processResults() {
+  probs = [];
   var fCards = 11;
   var lCards = 6;
-  var data = $round.val();
+  var data = $round.val().toLowerCase();
+
+  //if first 3 letters are valid
   if (data.match("(?:[fl]{3})")) {
     $(answer).text("calculating");
     for (var i = 0, len = data.length; i < len; i++) {

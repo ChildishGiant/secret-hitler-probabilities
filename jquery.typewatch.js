@@ -2,7 +2,7 @@
 *	TypeWatch 3
 *
 *	Examples/Docs: github.com/dennyferra/TypeWatch
-*  
+*
 *  Dual licensed under the MIT and GPL licenses:
 *  http://www.opensource.org/licenses/mit-license.php
 *  http://www.gnu.org/licenses/gpl.html
@@ -34,7 +34,7 @@
 		}, o);
 
 		function checkElement(timer, override) {
-			var value = timer.type === 'DIV' 
+			var value = timer.type === 'DIV'
 				? jQuery(timer.el).html()
 				: jQuery(timer.el).val();
 
@@ -53,7 +53,7 @@
 		function watchElement(elem) {
 			var elementType = (elem.type || elem.nodeName).toUpperCase();
 			if (jQuery.inArray(elementType, options.inputTypes) >= 0) {
-				
+
 				// Allocate timer element
 				var timer = {
 					timer: null,
@@ -78,7 +78,6 @@
 					if (typeof evt.keyCode != 'undefined' && evt.keyCode == 13
 						&& evtElementType !== 'TEXTAREA' && elementType !== 'DIV')
 					{
-						console.log('OVERRIDE');
 						timerWait = 1;
 						overrideBool = true;
 					}
